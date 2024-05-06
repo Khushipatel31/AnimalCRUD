@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", routes);
 
 require("./utils/dbConfig").getDBConnection();
-app.use(errorHandler)
+app.use(errorHandler)//error handling
 
 const server = app.listen(port, () => {
     console.log(`Server is running at port ${port} `);

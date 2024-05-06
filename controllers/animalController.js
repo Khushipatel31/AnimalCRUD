@@ -2,6 +2,7 @@ const animals = require("../model/animal");
 const { CustomHttpError } = require("../utils/customError");
 const catchAsyncErrors = require("../middleware/catchAsyncError");
 
+//adding new animal
 const addAnimal = catchAsyncErrors(async (req, res, next) => {
     const { name, species, habitat, diet, lifespan, image } = req.body;
     if (!name || !species || !habitat || !diet || !lifespan) {
@@ -23,6 +24,7 @@ const addAnimal = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+//updating animal
 const updateAnimal = catchAsyncErrors(async (req, res, next) => {
     const { id } = req.params;
     const { name, species, habitat, diet, lifespan, image } = req.body;
@@ -46,6 +48,7 @@ const updateAnimal = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
+//deleting animal
 const deleteAnimal = catchAsyncErrors(async (req, res, next) => {
     const { id } = req.params;
     try {
@@ -61,7 +64,7 @@ const deleteAnimal = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
-
+//getting all animals
 const getAllAnimals = catchAsyncErrors(async (req, res, next) => {
     const allAnimals = await animals.find({});
     res.status(200).json({
